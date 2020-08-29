@@ -9,17 +9,17 @@ namespace Energy.Plugin
 {
    public class Plugin
     {
-        private BindingFlags Flags = BindingFlags.Instance | BindingFlags.GetProperty | BindingFlags.SetProperty | BindingFlags.GetField | BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Public;
-        string name;
+        private BindingFlags _flags = BindingFlags.Instance | BindingFlags.GetProperty | BindingFlags.SetProperty | BindingFlags.GetField | BindingFlags.SetField | BindingFlags.NonPublic | BindingFlags.Public;
+        private string _name;
         public string Name
         {
             set
             {
-                if (string.IsNullOrEmpty(this.Name) || this.name == base.GetType().Name) this.name = value;
+                if (string.IsNullOrEmpty(this.Name) || this._name == base.GetType().Name) this._name = value;
             }
             get
             {
-                return this.name;
+                return this._name;
             }
         }
         public string Author;
@@ -51,6 +51,6 @@ namespace Energy.Plugin
                 }
             }         
         }
-        public object CallHook(string hook, params object[] args) =>  GetType().GetMethod(hook, Flags).Invoke(this, args);     
+        public object CallHook(string hook, params object[] args) =>  GetType().GetMethod(hook, _flags).Invoke(this, args);     
     }
 }
