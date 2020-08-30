@@ -20,6 +20,17 @@ namespace Energy.Plugin
                 this.Version = Version;
             }
         }
+
+        [AttributeUsage(AttributeTargets.Method)]
+        public class Command : Attribute 
+        {
+            public string ChatCommand;
+        public Command(string command) 
+            {
+                this.ChatCommand = command;
+            }
+        }
+
         [AttributeUsage(AttributeTargets.Class)]
         public class Description : Attribute
         {
